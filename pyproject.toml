@@ -1,0 +1,75 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lightning-text"
+dynamic = ["version"]
+description = "Adapter for using FastText library with scikit-learn and optuna."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Martin Jurča", email = "martin.jurca@firma.seznam.cz" },
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Operating System :: OS Independent",
+  "License :: OSI Approved :: MIT License",
+  "Typing :: Typed",
+]
+dependencies = [
+  "numpy >= 2.0.0",
+  "fasttext >= 0.9.3",
+  "scikit-learn >= 1.6",
+]
+
+[project.optional-dependencies]
+optuna = [
+  "optuna >= 4.0.0",
+]
+
+[project.urls]
+Documentation = "https://github.com/seznam/lightning-text#readme"
+Issues = "https://github.com/seznam/lightning-text/issues"
+Source = "https://github.com/seznam/lightning-text"
+
+[tool.hatch.version]
+path = "src/lightning_text/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/lightning_text tests}"
+
+[tool.coverage.run]
+source_pkgs = ["lightning_text", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/lightning_text/__about__.py",
+]
+
+[tool.coverage.paths]
+lightning_text = ["src/lightning_text", "*/lightning_text/src/lightning_text"]
+tests = ["tests", "*/lightning_text/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true

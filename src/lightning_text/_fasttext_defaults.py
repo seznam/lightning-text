@@ -1,0 +1,34 @@
+import multiprocessing
+from pathlib import Path
+from typing import Literal
+
+DEFAULT_MODEL: Literal['cbow', 'skipgram'] = 'skipgram'
+DEFAULT_LR_SUPERVISED: float = 0.1
+DEFAULT_LR_UNSUPERVISED: float = 0.05
+DEFAULT_LR_UPDATE_RATE: int = 100
+DEFAULT_DIM: int = 100
+DEFAULT_WS: int = 5
+DEFAULT_EPOCH: int = 5
+DEFAULT_MIN_COUNT_SUPERVISED: int = 1
+DEFAULT_MIN_COUNT_UNSUPERVISED: int = 5
+DEFAULT_MIN_COUNT_LABEL: int = 0
+DEFAULT_MINN_SUPERVISED: int = 0
+DEFAULT_MINN_UNSUPERVISED: int = 3
+DEFAULT_MAXN_SUPERVISED: int = 0
+DEFAULT_MAXN_UNSUPERVISED: int = 6
+DEFAULT_NEG: int = 5
+DEFAULT_WORD_NGRAMS: int = 1
+DEFAULT_LOSS_SUPERVISED: Literal['softmax', 'ns', 'hs', 'ova'] = 'softmax'
+DEFAULT_LOSS_UNSUPERVISED: Literal['ns', 'hs', 'ova'] = 'ns'
+DEFAULT_BUCKET: int = 2_000_000
+DEFAULT_THREAD: int = multiprocessing.cpu_count() - 1
+DEFAULT_T: float = 1e-4
+DEFAULT_LABEL: str = '__label__'
+DEFAULT_VERBOSE: int = 2
+DEFAULT_PRETRAINED_VECTORS: str | Path = ''
+DEFAULT_SEED: int = 0
+DEFAULT_AUTOTUNE_VALIDATION_FILE: str | Path = ''
+DEFAULT_AUTOTUNE_METRIC: str = 'f1'
+DEFAULT_AUTOTUNE_PREDICTIONS: int = 1
+DEFAULT_AUTOTUNE_DURATION: int = 60 * 5  # 5 minutes
+DEFAULT_AUTOTUNE_MODEL_SIZE: int | str = ''
